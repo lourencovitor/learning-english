@@ -1,31 +1,29 @@
 import React from 'react';
 import {
-  Form, FormGroup, Label, Input, FormFeedback, FormText,
+  Form, FormGroup, Label, Input,
 } from 'reactstrap';
+import Card from '../../components/Card';
+import './index.css';
 
 const Auth = () => (
-  <>
-    <Form className="w-50">
-      <FormGroup>
-        <Label for="exampleEmail">Input without validation</Label>
-        <Input />
-        <FormFeedback>You will not be able to see this</FormFeedback>
-        <FormText>Example help text that remains unchanged.</FormText>
-      </FormGroup>
-      <FormGroup>
-        <Label for="exampleEmail">Valid input</Label>
-        <Input valid />
-        <FormFeedback valid>Sweet! that name is available</FormFeedback>
-        <FormText>Example help text that remains unchanged.</FormText>
-      </FormGroup>
-      <FormGroup>
-        <Label for="examplePassword">Invalid input</Label>
-        <Input invalid />
-        <FormFeedback>Oh noes! that name is already taken</FormFeedback>
-        <FormText>Example  text that  unchanged.</FormText>
-      </FormGroup>
-    </Form>
-  </>
+  <div className="main">
+    <Card className="w-50">
+      <Form>
+        <FormGroup>
+          <Label for="exampleEmail">Input without validation</Label>
+          <Input />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleEmail">Valid input</Label>
+          <Input valid />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword">Invalid input</Label>
+          <Input invalid />
+        </FormGroup>
+      </Form>
+    </Card>
+  </div>
 );
 
 export default Auth;
