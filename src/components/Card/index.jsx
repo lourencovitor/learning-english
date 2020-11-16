@@ -4,8 +4,8 @@ import {
   Card,
 } from 'reactstrap';
 
-export default ({ children, className }) => (
-  <Card className={`${className} p-3`}>
+export default ({ children, className, style }) => (
+  <Card className={`${className} p-3`} style={style}>
     {children}
   </Card>
 );
