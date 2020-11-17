@@ -4,9 +4,12 @@ import { Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { red } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import Card from "../../components/Card";
 import "./styles.css";
 import { emailValidade, passwordValidade } from "./validate";
+import { POST_AUTH } from "../../redux/actions";
+import { postAuth } from "../../redux/auth/actions";
 
 const initialValue = {
   value: "",
@@ -14,7 +17,7 @@ const initialValue = {
   invalid: false,
 };
 
-const Auth = () => {
+const Auth = ({ postAuthAction }) => {
   const [email, setEmail] = useState({
     initialValue,
   });
@@ -38,6 +41,7 @@ const Auth = () => {
       password: password.value,
     };
     console.log(data);
+    postAuthAction(data);
   };
 
   return (
@@ -73,12 +77,12 @@ const Auth = () => {
                 <Input
                   name="password"
                   id="password"
-                  value={password.value}
+                  value={password.value || ""}
                   onChange={(e) => {
                     setPassword({ ...password, value: e.target.value });
                   }}
                   onKeyUp={() => validatePassword()}
-                  valid={password.valid || ""}
+                  valid={password.valid}
                   invalid={password.invalid}
                 />
                 <div className="d-flex justify-content-beteween my-3 p-1">
@@ -121,4 +125,13 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default connect(
+  ({ authStore }) => ({
+    loadingList: authStore.loadingList[POST_AUTH],
+    user: authStore.user,
+    error: authStore.error,
+  }),
+  {
+    postAuthAction: postAuth,
+  }
+)(React.memo(Auth));

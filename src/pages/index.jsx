@@ -5,6 +5,10 @@ import Layout from "../layout";
 import Auth from "./Auth";
 import RegisterUser from "./RegisterUser";
 
-export const auth = () => <Layout>{Auth()}</Layout>;
+export const auth = () => (
+  <Layout>
+    <Auth />
+  </Layout>
+);
 
 export const registerUser = () => <Layout>{RegisterUser()}</Layout>;
