@@ -51,13 +51,12 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
       email: email.value,
       password: password.value,
     };
-    console.log(data);
     postAuthAction(data);
   };
 
   useEffect(() => {
     if (error) {
-      toast.error("Dados de usuário inválido", {
+      toast.warning("Dados de usuário inválido", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -120,6 +119,7 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
                       Password
                     </Label>
                     <Input
+                      type="password"
                       name="password"
                       id="password"
                       value={password.value || ""}

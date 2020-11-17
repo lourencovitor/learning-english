@@ -4,6 +4,7 @@ import { Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { red } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import Card from "../../components/Card";
 import "./styles.css";
 import {
@@ -13,6 +14,8 @@ import {
   confirmPasswordValidade,
 } from "./validate";
 import { emailValidade, passwordValidade } from "../Auth/validate";
+import { POST_USER } from "../../redux/actions";
+import { postUser } from "../../redux/user/actions";
 
 const initialValue = {
   value: "",
@@ -20,7 +23,7 @@ const initialValue = {
   invalid: false,
 };
 
-const RegisterUser = () => {
+const RegisterUser = ({ postUserAction }) => {
   const [name, setName] = useState({
     initialValue,
   });
@@ -83,7 +86,7 @@ const RegisterUser = () => {
       password: password.value,
       confirmPassword: confirmPassword.value,
     };
-    console.log(data);
+    postUserAction(data);
   };
 
   return (
@@ -198,7 +201,7 @@ const RegisterUser = () => {
                   invalid={confirmPassword.invalid}
                 />
                 <div className="d-flex justify-content-beteween mb-1">
-                  <Link to="#" className="d-flex justify-content-end w-100 ">
+                  <Link to="/" className="d-flex justify-content-end w-100 ">
                     <Button
                       color="link"
                       style={{ color: red[400], boxShadow: "none" }}
@@ -232,4 +235,13 @@ const RegisterUser = () => {
   );
 };
 
-export default RegisterUser;
+export default connect(
+  ({ userStore }) => ({
+    loadingList: userStore.loadingList[POST_USER],
+    user: userStore.user,
+    error: userStore.error,
+  }),
+  {
+    postUserAction: postUser,
+  }
+)(React.memo(RegisterUser));

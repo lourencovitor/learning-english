@@ -11,4 +11,8 @@ export const auth = () => (
   </Layout>
 );
 
-export const registerUser = () => <Layout>{RegisterUser()}</Layout>;
+export const registerUser = () => (
+  <Layout>
+    <RegisterUser />
+  </Layout>
+);
