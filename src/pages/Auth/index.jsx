@@ -11,15 +11,9 @@ import {
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { red } from '@material-ui/core/colors';
 import Card from '../../components/Card';
-import './index.css';
+import './styles.css';
 
-const initialEmail = {
-  value: '',
-  valid: false,
-  invalid: false,
-};
-
-const initialPassword = {
+const initialValue = {
   value: '',
   valid: false,
   invalid: false,
@@ -27,10 +21,10 @@ const initialPassword = {
 
 const Auth = () => {
   const [email, setEmail] = useState({
-    initialEmail,
+    initialValue,
   });
   const [password, setPassword] = useState({
-    initialPassword,
+    initialValue,
   });
 
   const validateEmail = () => {
@@ -50,7 +44,7 @@ const Auth = () => {
         valid: false,
       });
     }
-    return setEmail(initialEmail);
+    return setEmail(initialValue);
   };
 
   const validatePassword = () => {
@@ -70,7 +64,7 @@ const Auth = () => {
         valid: false,
       });
     }
-    return setPassword(initialPassword);
+    return setPassword(initialValue);
   };
 
   const onSubmit = () => {
@@ -114,8 +108,12 @@ const Auth = () => {
                   valid={password.valid}
                   invalid={password.invalid}
                 />
+                <div className="d-flex justify-content-beteween mb-1">
+                  <Button color="link" style={{ color: red[400] }} className="d-flex justify-content-left w-100 p-2">Sign Up</Button>
+                  <Button color="link" style={{ color: red[400] }} className="d-flex justify-content-end w-100 p-2">Forgot password</Button>
+                </div>
+                <Button onClick={onSubmit} color="danger" block disabled={!email.valid || !password.valid}>Sign in</Button>
               </FormGroup>
-              <Button onClick={onSubmit} color="danger" block disabled={!email.valid || !password.valid}>Sign in</Button>
             </Form>
           </Card>
         </Col>
