@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import {
   Row,
@@ -10,11 +11,13 @@ import {
 } from 'reactstrap';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { red } from '@material-ui/core/colors';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 import './styles.css';
 import {
-  emailValidade, nameValidade, phoneValidade, rgValidade, passwordValidade, confirmPasswordValidade,
+  nameValidade, phoneValidade, rgValidade, confirmPasswordValidade,
 } from './validate';
+import { emailValidade, passwordValidade } from '../Auth/validate';
 
 const initialValue = {
   value: '',
@@ -72,6 +75,18 @@ const RegisterUser = () => {
     setConfirmPassword({ ...data });
   };
 
+  const onSubmit = () => {
+    const data = {
+      name: name.value,
+      rg: rg.value,
+      email: email.value,
+      phone: phone.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value,
+    };
+    console.log(data);
+  };
+
   return (
     <div className="main">
       <Row className="w-100 d-flex justify-content-center">
@@ -87,7 +102,7 @@ const RegisterUser = () => {
                   type="text"
                   name="name"
                   id="name"
-                  value={name.value}
+                  value={name.value || ''}
                   onChange={(e) => setName({ ...name, value: e.target.value })}
                   onKeyUp={validateName}
                   valid={name.valid}
@@ -101,7 +116,7 @@ const RegisterUser = () => {
                   name="rg"
                   id="rg"
                   max={9}
-                  value={rg.value}
+                  value={rg.value || ''}
                   onChange={(e) => setRg({ ...rg, value: e.target.value })}
                   onKeyUp={validateRg}
                   valid={rg.valid}
@@ -114,7 +129,7 @@ const RegisterUser = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={email.value}
+                  value={email.value || ''}
                   onChange={(e) => setEmail({ ...email, value: e.target.value })}
                   onKeyUp={validateEmail}
                   valid={email.valid}
@@ -128,7 +143,7 @@ const RegisterUser = () => {
                   name="phone"
                   id="phone"
                   max={13}
-                  value={phone.value}
+                  value={phone.value || ''}
                   onChange={(e) => setPhone({ ...phone, value: e.target.value })}
                   onKeyUp={validatePhone}
                   valid={phone.valid}
@@ -141,7 +156,7 @@ const RegisterUser = () => {
                   type="password"
                   name="password"
                   id="password"
-                  value={password.value}
+                  value={password.value || ''}
                   onChange={(e) => setPassword({ ...password, value: e.target.value })}
                   onKeyUp={validatePassword}
                   valid={password.valid}
@@ -154,7 +169,7 @@ const RegisterUser = () => {
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
-                  value={confirmPassword.value}
+                  value={confirmPassword.value || ''}
                   onChange={
                     (e) => setConfirmPassword({ ...confirmPassword, value: e.target.value })
                   }
@@ -163,10 +178,20 @@ const RegisterUser = () => {
                   invalid={confirmPassword.invalid}
                 />
                 <div className="d-flex justify-content-beteween mb-1">
-                  <Button color="link" style={{ color: red[400] }} className="d-flex justify-content-end w-100 p-2">Sign in</Button>
+                  <Link to="#" className="d-flex justify-content-end w-100 ">
+                    <Button color="link" style={{ color: red[400], boxShadow: 'none' }} className="d-flex justify-content-end w-100 p-2">Sign in</Button>
+                  </Link>
                 </div>
                 <Button
-                // onClick={onSubmit}
+                  onClick={onSubmit}
+                  disabled={
+                    !name.valid
+                    || !rg.valid
+                    || !email.valid
+                    || !phone.valid
+                    || !password.valid
+                    || !confirmPassword.valid
+                  }
                   color="danger"
                   block
                 >

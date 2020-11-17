@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import {
   Form,
@@ -10,8 +11,10 @@ import {
 } from 'reactstrap';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { red } from '@material-ui/core/colors';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 import './styles.css';
+import { emailValidade, passwordValidade } from './validate';
 
 const initialValue = {
   value: '',
@@ -28,43 +31,13 @@ const Auth = () => {
   });
 
   const validateEmail = () => {
-    if (email) {
-      const re = /\S+@\S+\.\S+/;
-      const validate = re.test(email.value);
-      if (validate) {
-        return setEmail({
-          ...email,
-          valid: true,
-          invalid: false,
-        });
-      }
-      return setEmail({
-        ...email,
-        invalid: true,
-        valid: false,
-      });
-    }
-    return setEmail(initialValue);
+    const data = emailValidade(email.value, email);
+    setEmail({ ...data });
   };
 
   const validatePassword = () => {
-    if (password) {
-      const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
-      const validate = re.test(password.value);
-      if (validate) {
-        return setPassword({
-          ...password,
-          valid: true,
-          invalid: false,
-        });
-      }
-      return setPassword({
-        ...password,
-        invalid: true,
-        valid: false,
-      });
-    }
-    return setPassword(initialValue);
+    const data = passwordValidade(password.value, password);
+    setPassword({ ...data });
   };
 
   const onSubmit = () => {
@@ -88,7 +61,7 @@ const Auth = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={email.value}
+                  value={email.value || ''}
                   onChange={(e) => setEmail({ ...email, value: e.target.value })}
                   onKeyUp={validateEmail}
                   valid={email.valid}
@@ -105,12 +78,16 @@ const Auth = () => {
                     setPassword({ ...password, value: e.target.value });
                   }}
                   onKeyUp={() => validatePassword()}
-                  valid={password.valid}
+                  valid={password.valid || ''}
                   invalid={password.invalid}
                 />
-                <div className="d-flex justify-content-beteween mb-1">
-                  <Button color="link" style={{ color: red[400] }} className="d-flex justify-content-left w-100 p-2">Sign Up</Button>
-                  <Button color="link" style={{ color: red[400] }} className="d-flex justify-content-end w-100 p-2">Forgot password</Button>
+                <div className="d-flex justify-content-beteween my-3 p-1">
+                  <Link to="/register-user" className="d-flex justify-content-first w-100">
+                    <Button color="link" className="p-0" style={{ color: red[400], boxShadow: 'none' }}>Sign Up</Button>
+                  </Link>
+                  <Link to="#" className="d-flex justify-content-end w-100 ">
+                    <Button color="link" className="p-0" style={{ color: red[400], boxShadow: 'none' }}>Forgot password</Button>
+                  </Link>
                 </div>
                 <Button onClick={onSubmit} color="danger" block disabled={!email.valid || !password.valid}>Sign in</Button>
               </FormGroup>
