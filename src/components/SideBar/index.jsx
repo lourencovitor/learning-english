@@ -5,14 +5,19 @@ import "react-pro-sidebar/dist/css/styles.css";
 const SideBar = () => {
   return (
     <ProSidebar>
-      <Menu iconShape="square">
+      <Menu iconShape="square" className="py-3">
         <MenuItem>Dashboard</MenuItem>
-        <SubMenu title="Components">
-          <MenuItem>Component</MenuItem>
-          <SubMenu title="Components1">
-            <MenuItem>Component 1</MenuItem>
-            <MenuItem>Component 2</MenuItem>
-          </SubMenu>
+        <SubMenu title="Games">
+          <MenuItem>game 1</MenuItem>
+          <MenuItem>game 2</MenuItem>
+        </SubMenu>
+        <SubMenu title="Activities">
+          <MenuItem>Activity 1</MenuItem>
+          <MenuItem>Activity 2</MenuItem>
+        </SubMenu>
+        <SubMenu title="English training">
+          <MenuItem>training 1</MenuItem>
+          <MenuItem>training 2</MenuItem>
         </SubMenu>
       </Menu>
     </ProSidebar>
