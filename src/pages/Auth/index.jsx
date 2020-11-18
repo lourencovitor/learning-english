@@ -10,9 +10,10 @@ import {
   Col,
   Spinner,
 } from "reactstrap";
+import { useHistory, Link } from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { red } from "@material-ui/core/colors";
-import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import Card from "../../components/Card";
@@ -29,6 +30,8 @@ const initialValue = {
 };
 
 const Auth = ({ postAuthAction, loadingList, user, error }) => {
+  const history = useHistory();
+
   const [email, setEmail] = useState({
     initialValue,
   });
@@ -79,8 +82,11 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
         draggable: true,
         progress: undefined,
       });
+      setTimeout(() => {
+        history.push("/dash-board");
+      }, 3400);
     }
-  }, [user]);
+  }, [history, user]);
 
   return (
     <div className="main">
