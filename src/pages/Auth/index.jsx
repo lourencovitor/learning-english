@@ -86,7 +86,7 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
         history.push("/dash-board");
       }, 3400);
     }
-  }, [user]);
+  }, [history, user]);
 
   return (
     <div className="main">
