@@ -17,15 +17,19 @@ const DashBoard = () => {
           </h1>
           <Row className="mt-5">
             <Col>
-              <Card>
-                <h3>Noticia 1</h3>
+              <Card className="cardDash">
+                <h3 className="my-2">Noticia 1</h3>
               </Card>
             </Col>
             <Col>
-              <Card />
+              <Card className="cardDash">
+                <h3 className="my-2">Noticia 1</h3>
+              </Card>
             </Col>
             <Col>
-              <Card />
+              <Card className="cardDash">
+                <h3 className="my-2">Noticia 1</h3>
+              </Card>
             </Col>
           </Row>
         </div>

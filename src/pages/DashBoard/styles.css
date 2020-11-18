@@ -4,3 +4,13 @@
     font-size: 3rem;
     font-family: 'Fredoka One', cursive;
 }
+
+.cardDash{
+    border-radius: 15px;
+}
+
+.cardDash > h3{
+    width: 100%;
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+}
