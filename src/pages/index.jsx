@@ -3,6 +3,7 @@ import React from "react";
 import "../assets/css/global.css";
 import Layout from "../layout";
 import Auth from "./Auth";
+import DashBoard from "./DashBoard";
 import Error from "./Error";
 import RegisterUser from "./RegisterUser";
 
@@ -15,6 +16,12 @@ export const auth = () => (
 export const registerUser = () => (
   <Layout>
     <RegisterUser />
+  </Layout>
+);
+
+export const dashBoard = () => (
+  <Layout>
+    <DashBoard />
   </Layout>
 );
 
