@@ -5,7 +5,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import RecordVoiceOverIcon from "@material-ui/icons/RecordVoiceOver";
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
@@ -22,11 +21,7 @@ const SideBar = () => {
         </MenuItem>
         <MenuItem icon={<ListAltIcon style={{ fontSize: 15 }} />}>
           Activity
-          {/* <Link to="/game" /> */}
-        </MenuItem>
-        <MenuItem icon={<RecordVoiceOverIcon style={{ fontSize: 15 }} />}>
-          English training
-          {/* <Link to="/game" /> */}
+          <Link to="/activity" />
         </MenuItem>
 
         <MenuItem

@@ -25,7 +25,6 @@ function postAuthAsync({ auth }) {
 function* postAuth({ payload }) {
   try {
     const response = yield call(postAuthAsync, payload);
-    console.log(response);
     yield put(postAuthSuccess(response));
   } catch (error) {
     yield put(postAuthError(error));
