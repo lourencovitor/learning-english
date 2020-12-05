@@ -12,25 +12,29 @@ const SideBar = () => {
   return (
     <ProSidebar>
       <Menu iconShape="square" className="py-3">
-        <MenuItem>
-          Dashboard{" "}
-          <DashboardIcon style={{ fontSize: 15, marginLeft: "10px" }} />
+        <MenuItem icon={<DashboardIcon style={{ fontSize: 15 }} />}>
+          Dashboard
+          <Link to="/dash-board" />
         </MenuItem>
-        <Link to="/game">
-          <MenuItem>
-            Game{" "}
-            <SportsEsportsIcon style={{ fontSize: 15, marginLeft: "10px" }} />
-          </MenuItem>
-        </Link>
-        <MenuItem>
-          Activity <ListAltIcon style={{ fontSize: 15, marginLeft: "10px" }} />
+        <MenuItem icon={<SportsEsportsIcon style={{ fontSize: 15 }} />}>
+          Game
+          <Link to="/game" />
         </MenuItem>
-        <MenuItem>
-          English training{" "}
-          <RecordVoiceOverIcon style={{ fontSize: 15, marginLeft: "10px" }} />
+        <MenuItem icon={<ListAltIcon style={{ fontSize: 15 }} />}>
+          Activity
+          {/* <Link to="/game" /> */}
         </MenuItem>
-        <MenuItem style={{ marginTop: "5vh" }}>
-          Logout <ExitToAppIcon style={{ fontSize: 15, marginLeft: "10px" }} />{" "}
+        <MenuItem icon={<RecordVoiceOverIcon style={{ fontSize: 15 }} />}>
+          English training
+          {/* <Link to="/game" /> */}
+        </MenuItem>
+
+        <MenuItem
+          style={{ marginTop: "5vh" }}
+          icon={<ExitToAppIcon style={{ fontSize: 15 }} />}
+        >
+          Logout
+          {/* <Link to="/game" /> */}
         </MenuItem>
       </Menu>
     </ProSidebar>
