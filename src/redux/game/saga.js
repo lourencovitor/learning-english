@@ -1,33 +1,32 @@
 /* eslint-disable prefer-promise-reject-errors */
 import { all, call, fork, put, takeEvery } from "redux-saga/effects";
-import { POST_USER } from "../actions";
+import { games } from "../../data/games";
+import { GET_GAMES } from "../actions";
 
-import { postUserSuccess, postUserError } from "./actions";
+import { getGamesSuccess, getGamesError } from "./actions";
 
-function postUserAsync({ user }) {
+function getGamesAsync() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const data = {
-        ...user,
-      };
+      const data = [...games];
       resolve(data);
     }, 4000);
   });
 }
 
-function* postUser({ payload }) {
+function* getGames() {
   try {
-    const response = yield call(postUserAsync, payload);
-    yield put(postUserSuccess(response));
+    const response = yield call(getGamesAsync);
+    yield put(getGamesSuccess(response));
   } catch (error) {
-    yield put(postUserError(error));
+    yield put(getGamesError(error));
   }
 }
 
-export function* watchpostUser() {
-  yield takeEvery(POST_USER, postUser);
+export function* watchgetGames() {
+  yield takeEvery(GET_GAMES, getGames);
 }
 
 export default function* rootSaga() {
-  yield all([fork(watchpostUser)]);
+  yield all([fork(watchgetGames)]);
 }

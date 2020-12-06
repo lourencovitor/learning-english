@@ -1,31 +1,35 @@
-import { POST_USER, POST_USER_SUCCESS, POST_USER_ERROR } from "../actions";
+import {
+  GET_ACTIVITY,
+  GET_ACTIVITY_SUCCESS,
+  GET_ACTIVITY_ERROR,
+} from "../actions";
 
 const INITIAL_STATE = {
   loading: false,
-  user: {},
-  loadingList: { [POST_USER]: false },
+  activies: [],
+  loadingList: { [GET_ACTIVITY]: false },
   error: "",
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case POST_USER:
+    case GET_ACTIVITY:
       return {
         ...state,
-        loadingList: { ...state.loadingList, [POST_USER]: true },
+        loadingList: { ...state.loadingList, [GET_ACTIVITY]: true },
         error: false,
       };
-    case POST_USER_SUCCESS:
+    case GET_ACTIVITY_SUCCESS:
       return {
         ...state,
-        user: action.payload,
-        loadingList: { ...state.loadingList, [POST_USER]: false },
+        activies: action.payload,
+        loadingList: { ...state.loadingList, [GET_ACTIVITY]: false },
         error: false,
       };
-    case POST_USER_ERROR:
+    case GET_ACTIVITY_ERROR:
       return {
         ...state,
-        loadingList: { ...state.loadingList, [POST_USER]: false },
+        loadingList: { ...state.loadingList, [GET_ACTIVITY]: false },
         error: true,
       };
     default:

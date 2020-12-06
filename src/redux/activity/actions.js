@@ -1,20 +1,24 @@
-import { POST_USER, POST_USER_SUCCESS, POST_USER_ERROR } from "../actions";
+import {
+  GET_ACTIVITY,
+  GET_ACTIVITY_SUCCESS,
+  GET_ACTIVITY_ERROR,
+} from "../actions";
 
-export const postUser = (user) => {
+export const getActivity = () => {
   return {
-    type: POST_USER,
-    payload: { user },
+    type: GET_ACTIVITY,
+    payload: {},
   };
 };
 
-export const postUserSuccess = (user) => {
+export const getActivitySuccess = (activies) => {
   return {
-    type: POST_USER_SUCCESS,
-    payload: user,
+    type: GET_ACTIVITY_SUCCESS,
+    payload: activies,
   };
 };
 
-export const postUserError = (error) => ({
-  type: POST_USER_ERROR,
+export const getActivityError = (error) => ({
+  type: GET_ACTIVITY_ERROR,
   payload: error,
 });

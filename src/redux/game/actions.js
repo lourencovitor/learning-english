@@ -1,20 +1,20 @@
-import { POST_USER, POST_USER_SUCCESS, POST_USER_ERROR } from "../actions";
+import { GET_GAMES, GET_GAMES_SUCCESS, GET_GAMES_ERROR } from "../actions";
 
-export const postUser = (user) => {
+export const getGames = () => {
   return {
-    type: POST_USER,
-    payload: { user },
+    type: GET_GAMES,
+    payload: {},
   };
 };
 
-export const postUserSuccess = (user) => {
+export const getGamesSuccess = (games) => {
   return {
-    type: POST_USER_SUCCESS,
-    payload: user,
+    type: GET_GAMES_SUCCESS,
+    payload: games,
   };
 };
 
-export const postUserError = (error) => ({
-  type: POST_USER_ERROR,
+export const getGamesError = (error) => ({
+  type: GET_GAMES_ERROR,
   payload: error,
 });
