@@ -9,12 +9,12 @@ import {
   Input,
   Button,
   Spinner,
+  Card,
 } from "reactstrap";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { red } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Card from "../../components/Card";
 import "./styles.css";
 import {
   nameValidade,
@@ -102,7 +102,7 @@ const RegisterUser = ({ postUserAction, loadingList }) => {
     <div className="main">
       <Row className="w-100 d-flex justify-content-center">
         <Col sm={12} md={7} lg={4}>
-          <Card style={{ borderRadius: "20px" }}>
+          <Card className="p-4" style={{ borderRadius: "20px" }}>
             <h1 className="text-center">
               <PersonAddIcon style={{ fontSize: 50, color: red[400] }} />
             </h1>
