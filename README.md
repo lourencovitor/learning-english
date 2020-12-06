@@ -2,45 +2,61 @@
 
 ## Table of Contents
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Contributing](../CONTRIBUTING.md)
+- [Prerequisites](#prerequisites)
+- [Used Packages](#packages)
+- [Getting started](#gettingStated)
 
-## About <a name = "about"></a>
-
-Write about 1-2 paragraphs describing the purpose of your project.
-
-## Getting Started <a name = "getting_started"></a>
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
+## Prerequisites <a name="prerequisites"></a>
 
 What things you need to install the software and how to install them.
 
+- <a href="https://nodejs.org/en/download/">Node</a>
+- Basics in <a href="https://en.reactjs.org/docs/getting-started.html">React</a>
+
+## Used Packages <a name="packages"></a>
+
+- dependencies
+  - @material-ui/core,
+  - @material-ui/icons,
+  - @testing-library/jest-dom,
+  - @testing-library/react,
+  - @testing-library/user-event,
+  - bootstrap,
+  - jsonwebtoken,
+  - react,
+  - react-dom,
+  - react-loading,
+  - react-pro-sidebar,
+  - react-redux,
+  - react-router-dom,
+  - react-scripts,
+  - react-toastify,
+  - reactstrap,
+  - redux,
+  - redux-saga,
+  - web-vitals
+- devDependencies
+  - babel-eslint,
+  - eslint,
+  - eslint-config-airbnb,
+  - eslint-config-prettier,
+  - eslint-plugin-import,
+  - eslint-plugin-jsx-a11y,
+  - eslint-plugin-prettier,
+  - eslint-plugin-react,
+  - eslint-plugin-react-hooks,
+  - prettier
+
+## Getting started <a name="gettingStated"></a>
+
+Installing packages:
+
 ```
-Give examples
+npm install || yarn
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
+Starting application:
 
 ```
-Give the example
+npm start || yarn start
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## Usage <a name = "usage"></a>
-
-Add notes about how to use the system.
