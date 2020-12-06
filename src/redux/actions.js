@@ -5,6 +5,10 @@ export const POST_AUTH = "POST_AUTH";
 export const POST_AUTH_SUCCESS = "POST_AUTH_SUCCESS";
 export const POST_AUTH_ERROR = "POST_AUTH_ERROR";
 
+export const LOGOUT = "LOGOUT";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_ERROR = "LOGOUT_ERROR";
+
 // USER
 export const POST_USER = "POST_USER";
 export const POST_USER_SUCCESS = "POST_USER_SUCCESS";

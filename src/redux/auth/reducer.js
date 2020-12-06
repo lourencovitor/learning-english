@@ -1,4 +1,11 @@
-import { POST_AUTH, POST_AUTH_SUCCESS, POST_AUTH_ERROR } from "../actions";
+import {
+  POST_AUTH,
+  POST_AUTH_SUCCESS,
+  POST_AUTH_ERROR,
+  LOGOUT,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
+} from "../actions";
 
 const INITIAL_STATE = {
   loading: false,
@@ -26,6 +33,25 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loadingList: { ...state.loadingList, [POST_AUTH]: false },
+        error: true,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: {},
+        loadingList: { ...state.loadingList, [LOGOUT]: true },
+        error: false,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loadingList: { ...state.loadingList, [LOGOUT]: false },
+        error: false,
+      };
+    case LOGOUT_ERROR:
+      return {
+        ...state,
+        loadingList: { ...state.loadingList, [LOGOUT]: false },
         error: true,
       };
     default:

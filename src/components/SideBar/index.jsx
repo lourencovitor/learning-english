@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -6,8 +7,10 @@ import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../redux/auth/actions";
 
-const SideBar = () => {
+const SideBar = ({ logoutAction }) => {
   return (
     <ProSidebar>
       <Menu iconShape="square" className="py-3">
@@ -29,11 +32,13 @@ const SideBar = () => {
           icon={<ExitToAppIcon style={{ fontSize: 15 }} />}
         >
           Logout
-          {/* <Link to="/game" /> */}
+          <Link to="#" onClick={() => logoutAction()} />
         </MenuItem>
       </Menu>
     </ProSidebar>
   );
 };
 
-export default SideBar;
+export default connect(() => ({}), {
+  logoutAction: logout,
+})(React.memo(SideBar));
