@@ -12,7 +12,6 @@ import {
 } from "./actions";
 
 function postAuthAsync({ auth }) {
-  console.log(auth.email === user.email && auth.password === user.password);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (auth.email === user.email && auth.password === user.password) {

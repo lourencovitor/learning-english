@@ -72,7 +72,6 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
   }, [error]);
 
   useEffect(() => {
-    console.log(user.id);
     if (user.id) {
       toast.success("Usuário logado com sucesso", {
         position: "top-right",
@@ -89,8 +88,6 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
       }, 3400);
     }
   }, [history, user]);
-
-  console.log(user);
 
   return (
     <div className="main">

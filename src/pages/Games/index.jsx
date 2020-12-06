@@ -36,7 +36,7 @@ const Games = ({ games, getGamesAction, loadingList }) => {
             <Row className="mt-5">
               {games.map((game) => (
                 <Col xs={4} key={game._id}>
-                  <Card title={game.title} img={game.img} />
+                  <Card title={game.title} img={game.img} url={game.url} />
                 </Col>
               ))}
             </Row>

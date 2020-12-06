@@ -37,7 +37,7 @@ const DashBoard = ({ getDashAction, news, loadingList }) => {
               {news &&
                 news.map((card) => (
                   <Col xs={4} key={card._id}>
-                    <Card title={card.title} img={card.img} />
+                    <Card title={card.title} img={card.img} url={card.url} />
                   </Col>
                 ))}
             </Row>

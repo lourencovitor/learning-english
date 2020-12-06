@@ -36,7 +36,7 @@ const Activity = ({ activies, loadingList, getActivityAction }) => {
             <Row className="mt-5">
               {activies.map((game) => (
                 <Col xs={4} key={game._id}>
-                  <Card title={game.title} img={game.img} />
+                  <Card title={game.title} img={game.img} url={game.url} />
                 </Col>
               ))}
             </Row>

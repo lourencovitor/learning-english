@@ -26,7 +26,7 @@ const Router = () => (
       <PrivateRoute path="/game" exact component={games} />
       <PrivateRoute path="/activity" exact component={activity} />
       <Route path="/error" component={error} />
-      <PrivateRoute to="/error" />
+      <Redirect to="/error" />
     </Switch>
   </BrowserRouter>
 );
