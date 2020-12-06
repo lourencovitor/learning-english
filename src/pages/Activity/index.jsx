@@ -1,20 +1,20 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable react/jsx-no-target-blank */
 import React, { useEffect } from "react";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
+import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import { Col, Row } from "reactstrap";
 import { connect } from "react-redux";
-import Card from "../../components/Card";
 import SideBar from "../../components/SideBar";
+import Card from "../../components/Card";
 import "./styles.css";
-import { GET_DASH } from "../../redux/actions";
-import { getDash } from "../../redux/dashboard/actions";
+import { GET_ACTIVITY } from "../../redux/actions";
+import { getActivity } from "../../redux/activity/actions";
 import Loading from "../../components/Loading";
 
-const DashBoard = ({ getDashAction, news, loadingList }) => {
+const Activity = ({ activies, loadingList, getActivityAction }) => {
   useEffect(() => {
-    getDashAction();
-  }, [getDashAction]);
+    getActivityAction();
+  }, [getActivityAction]);
   return (
     <>
       <div className="d-flex">
@@ -23,7 +23,7 @@ const DashBoard = ({ getDashAction, news, loadingList }) => {
         </div>
         <div className="p-4 w-100">
           <h1 className="text-center learningEnglish">
-            Learning English <MenuBookIcon style={{ fontSize: 50 }} />
+            Activity <SportsEsportsIcon style={{ fontSize: 50 }} />
           </h1>
           {loadingList ? (
             <div
@@ -34,12 +34,11 @@ const DashBoard = ({ getDashAction, news, loadingList }) => {
             </div>
           ) : (
             <Row className="mt-5">
-              {news &&
-                news.map((card) => (
-                  <Col xs={4} key={card._id}>
-                    <Card title={card.title} img={card.img} url={card.url} />
-                  </Col>
-                ))}
+              {activies.map((game) => (
+                <Col xs={4} key={game._id}>
+                  <Card title={game.title} img={game.img} url={game.url} />
+                </Col>
+              ))}
             </Row>
           )}
         </div>
@@ -49,11 +48,11 @@ const DashBoard = ({ getDashAction, news, loadingList }) => {
 };
 
 export default connect(
-  ({ dashStore }) => ({
-    loadingList: dashStore.loadingList[GET_DASH],
-    news: dashStore.news,
+  ({ activityStore }) => ({
+    loadingList: activityStore.loadingList[GET_ACTIVITY],
+    activies: activityStore.activies,
   }),
   {
-    getDashAction: getDash,
+    getActivityAction: getActivity,
   }
-)(React.memo(DashBoard));
+)(React.memo(Activity));

@@ -18,7 +18,6 @@ function postUserAsync({ user }) {
 function* postUser({ payload }) {
   try {
     const response = yield call(postUserAsync, payload);
-    console.log(response);
     yield put(postUserSuccess(response));
   } catch (error) {
     yield put(postUserError(error));

@@ -8,7 +8,7 @@ import {
   Button,
   Row,
   Col,
-  Spinner,
+  Card,
 } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -16,12 +16,12 @@ import { red } from "@material-ui/core/colors";
 
 import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import Card from "../../components/Card";
 import "./styles.css";
 import { emailValidade, passwordValidade } from "./validate";
 import { POST_AUTH } from "../../redux/actions";
 import { postAuth } from "../../redux/auth/actions";
 import "react-toastify/dist/ReactToastify.css";
+import Loading from "../../components/Loading";
 
 const initialValue = {
   value: "",
@@ -82,6 +82,7 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
         draggable: true,
         progress: undefined,
       });
+      sessionStorage.setItem("token", user.token);
       setTimeout(() => {
         history.push("/dash-board");
       }, 3400);
@@ -92,14 +93,19 @@ const Auth = ({ postAuthAction, loadingList, user, error }) => {
     <div className="main">
       <Row className="w-100 d-flex justify-content-center">
         <Col sm={12} md={7} lg={4}>
-          <Card style={{ borderRadius: "20px" }}>
+          <Card className="p-4" style={{ borderRadius: "20px" }}>
             <h1 className="text-center">
               <AccountCircleIcon style={{ fontSize: 50, color: red[400] }} />
             </h1>
             <Form>
               {loadingList ? (
                 <div className="d-flex justify-content-center mt-3">
-                  <Spinner style={{ color: red[400] }} size="lg" />
+                  <Loading
+                    type="spinningBubbles"
+                    color={red[400]}
+                    height="10%"
+                    width="10%"
+                  />
                 </div>
               ) : (
                 <>

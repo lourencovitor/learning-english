@@ -6,6 +6,8 @@ import Auth from "./Auth";
 import DashBoard from "./DashBoard";
 import Error from "./Error";
 import RegisterUser from "./RegisterUser";
+import Games from "./Games";
+import Activity from "./Activity";
 
 export const auth = () => (
   <Layout>
@@ -22,6 +24,18 @@ export const registerUser = () => (
 export const dashBoard = () => (
   <Layout>
     <DashBoard />
+  </Layout>
+);
+
+export const games = () => (
+  <Layout>
+    <Games />
+  </Layout>
+);
+
+export const activity = () => (
+  <Layout>
+    <Activity />
   </Layout>
 );
 
